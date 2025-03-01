@@ -21,7 +21,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'cd SPE-A1/mycalculator/controller && npm install'
+                    sh 'cd mycalculator/controller && npm install'
                 }
             }
         }
@@ -29,7 +29,6 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Run tests from the correct backend directory
                     sh 'cd mycalculator/controller && npm test'
                 }
             }
