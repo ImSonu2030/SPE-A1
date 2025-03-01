@@ -2,6 +2,7 @@
   "name": "mycalculator",
   "version": "0.1.0",
   "private": true,
+  "type": "commonjs",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -42,14 +43,23 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "babel-jest": "^29.7.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1"
   },
   "jest": {
-  "clearMocks": true,
-  "collectCoverageFrom": ["src/**/*.{js,jsx}"],
-  "coveragePathIgnorePatterns": ["/node_modules/"],
-  "moduleNameMapper": {
-    "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+      "^axios$": "<rootDir>/src/mock___/axios.js"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(axios)/)"
+    ]
   }
-}
 }

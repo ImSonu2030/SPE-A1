@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Calculator.css';
+import axios from 'axios';
 
 const Calculator = () => {
   const [input, setInput] = useState('');

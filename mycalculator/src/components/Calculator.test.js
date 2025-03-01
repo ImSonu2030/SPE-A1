@@ -1,10 +1,14 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom'; // Add this import
 import Calculator from './Calculator';
 import axios from 'axios';
 
-// Mock Axios
-jest.mock('axios');
+// Mock axios directly
+jest.mock('axios', () => ({
+  get: jest.fn(() => Promise.resolve({ data: {} })),
+  post: jest.fn(() => Promise.resolve({ data: {} }))
+}));
 
 describe('Calculator', () => {
   it('renders without crashing', () => {

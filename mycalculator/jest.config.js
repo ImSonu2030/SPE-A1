@@ -1,13 +1,13 @@
 module.exports = {
-    transform: {
-      "^.+\\.(js|jsx)$": "babel-jest"
-    },
-    moduleNameMapper: {
-      "^axios$": require.resolve("axios")
-    },
-    transformIgnorePatterns: [
-      "/node_modules/(?!axios)"  // ✅ Allow Jest to transform axios
-    ],
-    moduleFileExtensions: ["js", "jsx", "json", "node"],
-    testEnvironment: "jsdom"
-  };
+  clearMocks: true,
+  testEnvironment: "jsdom",
+  collectCoverageFrom: ["src/**/*.{js,jsx}"],
+  coveragePathIgnorePatterns: ["/node_modules/"],
+  moduleNameMapper: {
+    "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+    "^axios$": "<rootDir>/src/mock___/axios.js"
+  },
+  transformIgnorePatterns: [
+    "node_modules/(?!(axios)/)"
+  ]
+};
