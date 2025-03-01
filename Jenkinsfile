@@ -22,6 +22,7 @@ pipeline {
             steps {
                 script {
                     sh 'cd mycalculator/controller && npm install'
+                    sh 'cd mycalculator && npm install'
                 }
             }
         }
@@ -29,7 +30,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'cd mycalculator/src && npm test'
+                    sh 'cd mycalculator && npm test'
                 }
             }
         }
