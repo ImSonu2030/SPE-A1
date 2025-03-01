@@ -25,11 +25,11 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'cd mycalculator/controller && npm test'
+                    sh 'cd mycalculator/src && npm test'
                 }
             }
         }
