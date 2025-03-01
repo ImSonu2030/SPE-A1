@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     // Run tests from the correct backend directory
-                    sh 'cd SPE-A1/mycalculator/controller && npm test'
+                    sh 'cd mycalculator/controller && npm test'
                 }
             }
         }
