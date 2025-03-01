@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_NAME = 'scientific-calculator'
-        GITHUB_REPO_URL = 'https://github.com/yourusername/ScientificCalculator.git'
+        GITHUB_REPO_URL = 'https://github.com/ImSonu2030/SPE-A1.git'
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
         DOCKER_HUB_USERNAME = 'MT2024152'
     }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Clone the repository
-                    git branch: 'main', url: "${https://github.com/yourusername/ScientificCalculator.git}"
+                    git branch: 'main', url: "${https://github.com/ImSonu2030/SPE-A1.git}"
                 }
             }
         }
