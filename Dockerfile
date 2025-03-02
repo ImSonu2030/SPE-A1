@@ -1,4 +1,3 @@
-
 FROM node:18-alpine
 
 WORKDIR /app
@@ -10,7 +9,8 @@ RUN npm install && cd controller && npm install
 
 COPY mycalculator ./
 
+RUN npm run build
+
 EXPOSE 3000 5000
 
-CMD (cd controller && node server.js &) && npm start
-
+CMD (cd controller && node server.js &) && npx serve -s build
