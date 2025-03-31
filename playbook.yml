@@ -19,15 +19,8 @@
         name: docker
         state: started
 
-    - name: Check if container exists
-      shell: docker ps -a --format '{{.Names}}' | grep -q scientific-calculator
-      register: container_exists
-      ignore_errors: yes
-
     - name: Remove existing container
-      shell: docker stop scientific-calculator && docker rm scientific-calculator
-      when: container_exists.rc == 0
-      ignore_errors: yes
+      shell: docker stop scientific-calculator || true && docker rm scientific-calculator || true
         
     - name: Running container
       shell: docker run -d --name scientific-calculator -p 3000:3000 -p 5000:5000 scientific-calculator
