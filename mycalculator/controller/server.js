@@ -5,9 +5,8 @@ const port = 5000;
 
 
 app.use(cors());
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json());
 
-// Helper function to evaluate factorial
 const factorial = (num) => {
   if (num === 0 || num === 1) return 1;
   let result = 1;
@@ -17,7 +16,6 @@ const factorial = (num) => {
   return result;
 };
 
-// POST endpoint to evaluate expressions
 app.post('/calculate', (req, res) => {
   const { expression } = req.body;
 
@@ -28,7 +26,6 @@ app.post('/calculate', (req, res) => {
   try {
     let result;
 
-    // Handle square root
     if (expression.startsWith('√')) {
       const number = parseFloat(expression.slice(1));
       if (isNaN(number)) {
@@ -36,7 +33,6 @@ app.post('/calculate', (req, res) => {
       }
       result = Math.sqrt(number);
     }
-    // Handle factorial
     else if (expression.endsWith('!')) {
       const number = parseFloat(expression.slice(0, -1));
       if (isNaN(number)) {
@@ -44,7 +40,6 @@ app.post('/calculate', (req, res) => {
       }
       result = factorial(number);
     }
-    // Handle natural logarithm
     else if (expression.startsWith('ln')) {
       const number = parseFloat(expression.slice(2));
       if (isNaN(number)) {
@@ -52,11 +47,9 @@ app.post('/calculate', (req, res) => {
       }
       result = Math.log(number);
     }
-    // Handle general expressions
     else {
-      // Replace '^' with '**' for exponentiation
       const sanitizedExpression = expression.replace(/\^/g, '**');
-      result = eval(sanitizedExpression); // Evaluate the expression
+      result = eval(sanitizedExpression);
     }
 
     res.json({ result });
@@ -65,7 +58,6 @@ app.post('/calculate', (req, res) => {
   }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Backend server running at http://localhost:${port}`);
 });
